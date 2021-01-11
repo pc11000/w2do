@@ -1,0 +1,88 @@
+.main {
+  width: 90%;
+  margin: auto;
+}
+.item-table,
+mat-table {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.infotext {
+  text-align: center;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+.buttons {
+  cursor: pointer;
+}
+
+.actions {
+  display:flex;
+  justify-content:center;
+ }
+
+.mat-column-title {
+  flex: 0 0 15%;
+}
+.mat-column-body {
+  flex: 0 0 55%;
+}
+.mat-mini-fab {
+  width: 30px;
+  height: 30px;
+}
+::ng-deep .mat-mini-fab .mat-button-wrapper,
+::ng-deep span .mat-button-wrapper {
+  padding: 0 !important;
+  display: inline-block;
+  line-height: 24px;
+}
+.material-icons {
+  font-size: 18px;
+}
+
+.mat-column-toDoDay {
+  flex: 0 0 10%;
+}
+
+header, .row {
+  display: flex;  /* aligns all child elements (flex items) in a row */
+}
+.colH {
+  flex: 1;        /* distributes space on the line equally among items */
+  border: 1px solid black;
+}
+.col {
+  flex: 1;        /* distributes space on the line equally among items */
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+}
+.col1 {
+  flex: 1;        /* distributes space on the line equally among items */
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  padding-top: 5px;
+}
+.colE {
+  flex: 1;        /* distributes space on the line equally among items */
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+}
+.rowContainer{
+/*  border-bottom: 5px solid blue;*/
+}
+tnx-todo-item{
+  margin-left:5px;
+}
+div[done='true']{
+  background-color: green;
+}
+div[done='false']{
+  background-color: darkorange;
+}
+
