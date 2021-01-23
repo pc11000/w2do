@@ -8,26 +8,19 @@ require('dotenv').config();
 
 var logger = require('morgan');
 
-var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var itemsRouter = require('./routes/items');
 
 var app = express();
 
 //Connect to mongo database
-mongoose.connect('mongodb://todo-db/todo', {useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect('mongodb://database:27017/todo', {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => {
   console.log("Connected to the database");
 })
 .catch(err => {
   console.log("Error occured in connecting to the database " + err);
 })
-
-
-
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -49,8 +42,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
-app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/todo', itemsRouter);
 
