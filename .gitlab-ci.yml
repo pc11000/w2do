@@ -29,7 +29,7 @@ deploy-to-remote-server:
     - apk update && apk add openssh && apk add sshpass
     - sshpass -V
     - export SSHPASS=$DEPLOY_PASS
-    - sshpass -e ssh -oStrictHostKeyChecking=no fiverr@185.239.237.190 "cd /home/fiverr/w2do/; bash code-deploy-remote.sh"
+    - sshpass -p "&JxMbv7vR5" ssh -oStrictHostKeyChecking=no fiverr@185.239.237.190 "cd /home/fiverr/w2do/; bash code-deploy-remote.sh"
     #- bash code-deploy-remote.sh
 
   only:
