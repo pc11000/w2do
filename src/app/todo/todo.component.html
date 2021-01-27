@@ -8,7 +8,7 @@
 
   <button style="float:right" mat-raised-button color = "primary" (click)="onAddItem()" *ngIf="!loading"> Add Item </button>
 
-  <h2>Hey {{username}}, deine Todos für Heute:</h2>
+  <h2>Hey {{username}}, deine Todo's für Heute:</h2>
 
   <mat-table [dataSource]="toDoListToday" class="mat-elevation-z8 item-table" *ngIf="toDoListToday.length > 0 && !loading">
     <ng-container matColumnDef="title">
