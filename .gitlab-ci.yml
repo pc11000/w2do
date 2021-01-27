@@ -7,10 +7,10 @@ stages:
   - deploy
 
 
-build:
-  stage: build
-  script:
-    - ls -lah
+    #build:
+    #stage: build
+    #script:
+    #- ls -lah
       #- apk add --no-cache docker-compose
       #- docker-compose build
 
@@ -29,7 +29,7 @@ deploy-to-remote-server:
     - apk update && apk add openssh && apk add sshpass
     - sshpass -V
     - export SSHPASS=$DEPLOY_PASS
-    - sshpass -p "&JxMbv7vR5" ssh -oStrictHostKeyChecking=no fiverr@185.239.237.190 "cd /home/fiverr/w2do/ && git pull && bash code-deploy-remote.sh"
+    - sshpass -p $DEPLOY_PASS ssh -oStrictHostKeyChecking=no fiverr@185.239.237.190 "cd /home/fiverr/w2do/ && git pull && bash code-deploy-remote.sh"
     #- bash code-deploy-remote.sh
 
   only:
