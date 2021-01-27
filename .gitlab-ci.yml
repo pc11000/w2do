@@ -28,10 +28,10 @@ deploy-to-remote-server:
      # Setup SSH deploy keys
     - 'which ssh-agent || ( apt-get install -qq openssh-client )'
     - eval $(ssh-agent -s)
-    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
-    - mkdir -p ~/.ssh
-    - chmod 700 ~/.ssh
-    - ssh-keyscan -H '185.239.237.190' >> ~/.ssh/known_hosts
+      #- echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null
+      #- mkdir -p ~/.ssh
+      #- chmod 700 ~/.ssh
+      #- ssh-keyscan -H '185.239.237.190' >> ~/.ssh/known_hosts
 
     
 
@@ -40,8 +40,9 @@ deploy-to-remote-server:
     - apk update && apk add openssh && apk add sshpass
     - sshpass -V
       #- export SSHPASS=$DEPLOY_PASS
-      #- sshpass -e ssh -oStrictHostKeyChecking=no fiverr@185.239.237.190 "cd /home/fiverr/w2do/ && git pull && bash code-deploy-remote.sh"
-    - ssh -o "StrictHostKeyChecking=no" fiverr@185.239.237.190 "cd /home/fiverr/w2do/ && git pull && bash code-deploy-remote.sh"
+    - sshpass -p "$DEPLOY_PASS" ssh -oStrictHostKeyChecking=no fiverr@185.239.237.190 "cd /home/fiverr/w2do/ && git pull && bash code-deploy-remote.sh"
+      #- ssh -o "StrictHostKeyChecking=no" fiverr@185.239.237.190 "cd /home/fiverr/w2do/ && git pull && bash code-deploy-remote.sh"
+
      
     #- bash code-deploy-remote.sh
 
