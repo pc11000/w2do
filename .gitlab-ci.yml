@@ -11,8 +11,8 @@ build:
   stage: build
   script:
     - ls -lah
-    - apk add --no-cache docker-compose
-    - docker-compose build
+      #- apk add --no-cache docker-compose
+      #- docker-compose build
 
 
 deploy-to-remote-server:
