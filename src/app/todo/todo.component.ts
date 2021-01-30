@@ -98,7 +98,10 @@ export class TodoComponent implements OnInit, OnDestroy {
   }
 
   changeValue(id, value) {
-    this.toDoService.setIsDone(id, !value);
+    this.toDoService.setIsDone(id, !value).subscribe(res => {
+      this.loading = true;
+      this.toDoService.getToDoItems(this.itemsPerPage, this.currPage);
+    });
   }
 
   onItemDelete(itemId: string) {

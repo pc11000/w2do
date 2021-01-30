@@ -21,7 +21,7 @@ export class AddItemComponent implements OnInit {
     { value: 'Tuesday' },
     { value: 'Wednesday' },
     { value: 'Thursday' },
-    { value: 'Firday' },
+    { value: 'Friday' },
     { value: 'Saturday' },
     { value: 'Sunday' }
   ];
@@ -29,7 +29,7 @@ export class AddItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      title: new FormControl(null, {validators: [Validators.required, Validators.minLength(3)]}),
+      title: new FormControl(null),
       body: new FormControl(null, {validators: [Validators.required]}),
       selectDay: new FormControl(this.weekDays[0].value, {validators: [Validators.required]})
     });

@@ -78,11 +78,7 @@ export class TodoService {
   }
 
   setIsDone(itemId: string, isDone: boolean) {
-    this.http.put(BACKEND_URL + itemId, {isDone, id: itemId})
-      .subscribe((res: any) => {
-        console.log(res);
-        this.router.navigate(['/']);
-      })
+    return this.http.put(BACKEND_URL + itemId, {isDone, id: itemId});
   }
 
   deleteItem(itemId: string) {

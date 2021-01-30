@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const itemSchema = mongoose.Schema({
-  title: { type: String, required: true },
+  title: { type: String, required: false },
   body: { type: String, required: true },
   toDoDay: { type: String, required: true },
   isDone: { type: Boolean, required: false },
