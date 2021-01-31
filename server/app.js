@@ -13,6 +13,7 @@ var itemsRouter = require('./routes/items');
 
 var app = express();
 
+
 //Connect to mongo database
 mongoose.connect('mongodb://185.239.237.190:27018/todo', {useNewUrlParser: true, useUnifiedTopology: true})
 .then(() => {
