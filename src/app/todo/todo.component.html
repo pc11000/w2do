@@ -6,15 +6,11 @@
 
   <mat-spinner *ngIf="loading"></mat-spinner>
 
-  <button style="float:right" mat-raised-button color = "primary" (click)="onAddItem()" *ngIf="!loading"> Add Item </button>
+  <button style="float:right" mat-raised-button color = "primary" (click)="onAddItem()" *ngIf="!loading"> Add Todo </button>
 
   <h2>Hey {{username}}, deine Todo's für Heute:</h2>
 
   <mat-table [dataSource]="toDoListToday" class="mat-elevation-z8 item-table" *ngIf="toDoListToday.length > 0 && !loading">
-    <ng-container matColumnDef="title">
-      <mat-header-cell *matHeaderCellDef> Group </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
-    </ng-container>
 
     <!-- Body Column -->
     <ng-container matColumnDef="body">
@@ -24,7 +20,7 @@
 
     <!-- Day Column -->
     <ng-container matColumnDef="toDoDay">
-      <mat-header-cell *matHeaderCellDef> Todo Day's </mat-header-cell>
+      <mat-header-cell *matHeaderCellDef> Todo Day</mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.toDoDay}} </mat-cell>
     </ng-container>
 
@@ -39,7 +35,7 @@
     <!-- Action Column -->
     <ng-container matColumnDef="actions">
       <mat-header-cell *matHeaderCellDef class="actions"> Actions </mat-header-cell>
-      <mat-cell *matCellDef="let element">
+      <mat-cell class="mat-cell-buttons" *matCellDef="let element">
         <button mat-mini-fab color="primary" [routerLink] = "['/edit', element.id]">
           <mat-icon>edit</mat-icon>
         </button>&nbsp;

@@ -36,7 +36,7 @@ export class TodoComponent implements OnInit, OnDestroy {
   Days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   username = localStorage.getItem('username');
 
-  displayedColumns: string[] = ['title', 'body', 'toDoDay', 'isDone', 'actions'];
+  displayedColumns: string[] = ['body', 'isDone', 'actions'];
   columnsToDisplay: string[] = this.displayedColumns.slice();
 
   constructor(private toDoService: TodoService, private router: Router) { }

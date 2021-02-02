@@ -31,6 +31,9 @@ mat-spinner {
 .mat-column-body {
   flex: 0 0 55%;
 }
+.mat-cell-buttons{
+  justify-content: center;
+}
 .mat-mini-fab {
   width: 30px;
   height: 30px;
