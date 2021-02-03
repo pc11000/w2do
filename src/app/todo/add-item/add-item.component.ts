@@ -28,10 +28,12 @@ export class AddItemComponent implements OnInit {
   constructor(private toDoService: TodoService, private router: Router, private activeRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
+    const date = new Date();
+    const weekDay = date.getDay() - 1
     this.form = new FormGroup({
       title: new FormControl(null),
       body: new FormControl(null, {validators: [Validators.required]}),
-      selectDay: new FormControl(this.weekDays[0].value, {validators: [Validators.required]})
+      selectDay: new FormControl(this.weekDays[weekDay].value, {validators: [Validators.required]})
     });
 
     this.activeRoute.paramMap.subscribe((paraMap: ParamMap) => {
