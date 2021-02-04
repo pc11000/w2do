@@ -55,7 +55,6 @@ export class TodoComponent implements OnInit, OnDestroy {
     .subscribe((itemsData: {items: Item[], itemsCount: number}) => {
 
       this.totalItems = itemsData.itemsCount;
-      console.log(itemsData.items)
       this.toDoList = itemsData.items;
 
       const day = new Date().getDay();
