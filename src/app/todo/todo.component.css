@@ -88,4 +88,17 @@ div[done='true']{
 div[done='false']{
   background-color: darkorange;
 }
-
+.inlineDelete:hover + .icon-delete{
+  display:block;
+}
+.icon-delete{
+  display:none;
+}
+.icon-delete:hover{
+  display:block;
+  cursor:pointer;
+}
+.inline-container{
+  display:flex;
+  max-height:19px;
+}

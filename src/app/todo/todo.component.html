@@ -80,44 +80,60 @@
     <div class="rowContainer">
       <div class="row" *ngFor="let element of toDoList">
         <div class="col1" *ngIf="element.toDoDay === 'Monday'">
-          <div [attr.done]="element.isDone">{{ element.body }}</div>
+          <div class="inline-container" [attr.done]="element.isDone">
+            <div class="inlineDelete" style="flex-grow:1">{{ element.body }}</div>
+            <mat-icon class="icon-delete" (click) = "onItemDelete(element.id)">delete</mat-icon>
+          </div>
         </div>
         <div class="col" *ngIf="element.toDoDay !== 'Monday'">
           <div></div>
         </div>
         <div class="col" *ngIf="element.toDoDay === 'Tuesday'">
-          <div [attr.done]="element.isDone">{{ element.body }}</div>
+          <div class="inline-container" [attr.done]="element.isDone">
+            <div class="inlineDelete" style="flex-grow:1">{{ element.body }}</div>
+            <mat-icon class="icon-delete" (click) = "onItemDelete(element.id)">delete</mat-icon>
+          </div>
         </div>
         <div class="col" *ngIf="element.toDoDay !== 'Tuesday'">
           <div></div>
         </div>
         <div class="col" *ngIf="element.toDoDay === 'Wednesday'">
-          <div [attr.done]="element.isDone">{{ element.body }}</div>
-        </div>
+          <div class="inline-container" [attr.done]="element.isDone">
+            <div class="inlineDelete" style="flex-grow:1">{{ element.body }}</div>
+            <mat-icon class="icon-delete" (click) = "onItemDelete(element.id)">delete</mat-icon>
+          </div>        </div>
         <div class="col" *ngIf="element.toDoDay !== 'Wednesday'">
           <div></div>
         </div>
         <div class="col" *ngIf="element.toDoDay === 'Thursday'">
-          <div [attr.done]="element.isDone">{{ element.body }}</div>
-        </div>
+          <div class="inline-container" [attr.done]="element.isDone">
+            <div class="inlineDelete" style="flex-grow:1">{{ element.body }}</div>
+            <mat-icon class="icon-delete" (click) = "onItemDelete(element.id)">delete</mat-icon>
+          </div>        </div>
         <div class="col" *ngIf="element.toDoDay !== 'Thursday'">
           <div></div>
         </div>
         <div class="col" *ngIf="element.toDoDay === 'Friday'">
-          <div [attr.done]="element.isDone">{{ element.body }}</div>
-        </div>
+          <div class="inline-container" [attr.done]="element.isDone">
+            <div class="inlineDelete" style="flex-grow:1">{{ element.body }}</div>
+            <mat-icon class="icon-delete" (click) = "onItemDelete(element.id)">delete</mat-icon>
+          </div>        </div>
         <div class="col" *ngIf="element.toDoDay !== 'Friday'">
           <div></div>
         </div>
         <div class="col" *ngIf="element.toDoDay === 'Saturday'">
-          <div [attr.done]="element.isDone">{{ element.body }}</div>
-        </div>
+          <div class="inline-container" [attr.done]="element.isDone">
+            <div class="inlineDelete" style="flex-grow:1">{{ element.body }}</div>
+            <mat-icon class="icon-delete" (click) = "onItemDelete(element.id)">delete</mat-icon>
+          </div>        </div>
         <div class="col" *ngIf="element.toDoDay !== 'Saturday'">
           <div></div>
         </div>
         <div class="col" *ngIf="element.toDoDay === 'Sunday'">
-          <div [attr.done]="element.isDone">{{ element.body }}</div>
-        </div>
+          <div class="inline-container" [attr.done]="element.isDone">
+            <div class="inlineDelete" style="flex-grow:1">{{ element.body }}</div>
+            <mat-icon class="icon-delete" (click) = "onItemDelete(element.id)">delete</mat-icon>
+          </div>        </div>
         <div class="col" *ngIf="element.toDoDay !== 'Sunday'">
           <div></div>
         </div>
@@ -136,13 +152,6 @@
     </div>
   </section>
   </div>
-
-
-
-
-
-
-
 
 
 
