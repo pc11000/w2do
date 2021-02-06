@@ -1,4 +1,10 @@
-main {
+/*.main {
   width: 90%;
-  margin: 1rem auto;
+  margin: auto;
+}*/
+@media screen and (max-width: 500px) {
+  .main {
+    width: 100% !important;
+    padding: 8px;
+  }
 }
