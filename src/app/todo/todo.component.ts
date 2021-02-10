@@ -90,7 +90,6 @@ export class TodoComponent implements OnInit, OnDestroy {
   }
 
   onItemEdit(itemId: string) {
-    // alert(itemId);
     this.toDoService.deleteItem(itemId).subscribe(res => {
       this.router.navigate(['/']);
     });
@@ -104,7 +103,6 @@ export class TodoComponent implements OnInit, OnDestroy {
   }
 
   onItemDelete(itemId: string) {
-    // alert(itemId);
     this.toDoService.deleteItem(itemId).subscribe(res => {
       this.loading = true;
       this.toDoService.getToDoItems(this.itemsPerPage, this.currPage);

@@ -2,6 +2,11 @@
   width: 90%;
   margin: auto;
 }
+@media screen and (max-width: 500px) {
+  .main {
+    width: 98% !important;
+  }
+}
 .item-table,
 mat-table {
   margin-top: 10px;
@@ -29,7 +34,7 @@ mat-spinner {
   flex: 0 0 15%;
 }
 .mat-column-body {
-  flex: 0 0 55%;
+  flex: 0 0 50%;
 }
 .mat-cell-buttons{
   justify-content: center;
@@ -87,5 +92,25 @@ div[done='true']{
 }
 div[done='false']{
   background-color: darkorange;
+}
+.inlineDelete:hover + .icon-delete{
+  display:block;
+}
+.icon-delete{
+  display:none;
+}
+.icon-delete:hover{
+  display:block;
+  cursor:pointer;
+}
+.inline-container{
+  display:flex;
+  max-height:19px;
+}
+
+@media screen and (max-width: 600px) {
+  .inlineDelete{
+    font-size:10px;
+  }
 }
 
