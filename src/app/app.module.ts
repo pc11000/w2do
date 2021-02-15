@@ -16,6 +16,8 @@ import { HeaderComponent } from './header/header.component';
 import { AddItemComponent } from './todo/add-item/add-item.component';
 import { ErrorInterceptor } from './error/error.interceptor';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -36,6 +38,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatCheckboxModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [
