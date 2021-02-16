@@ -28,9 +28,9 @@ export class TodoComponent implements OnInit, OnDestroy {
   toDoListToday: Item[] = [];
   loading = false;
   totalItems = 0;
-  itemsPerPage = 10;
+  itemsPerPage = 50;
   currPage = 1;
-  pageSizeOptions = [1, 2, 5, 10];
+  pageSizeOptions = [5, 10, 20, 50];
   private itemsSub: Subscription;
   private loadingSub: Subscription;
   Days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
