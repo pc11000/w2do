@@ -14,6 +14,7 @@ import { TodoComponent } from './todo/todo.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { HeaderComponent } from './header/header.component';
 import { AddItemComponent } from './todo/add-item/add-item.component';
+import { SettingsComponent } from './settings/settings.component';
 import { ErrorInterceptor } from './error/error.interceptor';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -28,6 +29,7 @@ import { environment } from '../environments/environment';
     SignupComponent,
     HeaderComponent,
     AddItemComponent,
+    SettingsComponent,
     ErrorComponent
   ],
   imports: [
