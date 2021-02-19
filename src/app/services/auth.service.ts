@@ -1,15 +1,14 @@
-import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Router } from "@angular/router";
+import { Subject } from "rxjs";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 
-import { AuthData } from '../auth/auth.model';
-import { environment } from '../../environments/environment';
-const BACKEND_URL = environment.apiUrl + 'users/';
-
+import { AuthData } from "../auth/auth.model";
+import { environment } from "../../environments/environment";
+const BACKEND_URL = environment.apiUrl + "users/";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class AuthService {
   private token;
@@ -17,17 +16,24 @@ export class AuthService {
   private userAuthenticated = false;
   private authTokenListner = new Subject<boolean>();
   private tokenTimer: any;
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {}
 
   createUser(name: string, email: string, password: string) {
     const authData: AuthData = { name, email, password };
 
-    this.http.post<{message: string, createdPost: any}>(BACKEND_URL + 'signup', authData)
-    .subscribe(res => {
-      this.router.navigate(['/login']);
-    }, error => {
-      console.log(error);
-    });
+    this.http
+      .post<{ message: string; createdPost: any }>(
+        BACKEND_URL + "signup",
+        authData
+      )
+      .subscribe(
+        (res) => {
+          this.router.navigate(["/login"]);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   getAuthTokenListner() {
@@ -59,27 +65,34 @@ export class AuthService {
       this.userAuthenticated = true;
       this.authTokenListner.next(true);
     }
-
   }
 
   login(email: string, password: string) {
     //const authData: AuthData = { 'dummy', email, password };
-    this.http.post<{message: string, userId: string, token: string, expiresIn: number }>
-    (BACKEND_URL + 'login', {email, password })
-    .subscribe(response => {
-      if (response.token) {
-        this.token = response.token;
-        this.userId = response.userId;
-        const expDuration = response.expiresIn;
-        this.setTokenTimer(expDuration);
-        this.saveAuthData(response);
-        this.userAuthenticated = true;
-        this.authTokenListner.next(true);
-        this.router.navigate(['/']);
-      }
-    }, error => {
-      console.log(error);
-    });
+    this.http
+      .post<{
+        message: string;
+        userId: string;
+        token: string;
+        expiresIn: number;
+      }>(BACKEND_URL + "login", { email, password })
+      .subscribe(
+        (response) => {
+          if (response.token) {
+            this.token = response.token;
+            this.userId = response.userId;
+            const expDuration = response.expiresIn;
+            this.setTokenTimer(expDuration);
+            this.saveAuthData(response);
+            this.userAuthenticated = true;
+            this.authTokenListner.next(true);
+            this.router.navigate(["/"]);
+          }
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   private setTokenTimer(expDuration: number) {
@@ -93,26 +106,27 @@ export class AuthService {
     const userId = response.userId;
     const expiresIn = response.expiresIn;
     const username = response.name;
-
+    const userMeta = response.userMeta ? response.userMeta : {};
     const now = new Date();
     const expDate = new Date(now.getTime() + expiresIn * 1000);
 
-    localStorage.setItem('token', token);
-    localStorage.setItem('username', username);
-    localStorage.setItem('userId', userId);
-    localStorage.setItem('expDate', expDate.toISOString());
+    localStorage.setItem("token", token);
+    localStorage.setItem("username", username);
+    localStorage.setItem("userId", userId);
+    localStorage.setItem("userMeta", JSON.stringify(userMeta));
+    localStorage.setItem("expDate", expDate.toISOString());
   }
 
   private clearAuthData() {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userId');
-    localStorage.removeItem('expDate');
+    localStorage.removeItem("token");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("expDate");
   }
 
   private getAuthData() {
-    const token = localStorage.getItem('token');
-    const userId = localStorage.getItem('userId');
-    const expDate = localStorage.getItem('expDate');
+    const token = localStorage.getItem("token");
+    const userId = localStorage.getItem("userId");
+    const expDate = localStorage.getItem("expDate");
     if (!token || !userId || !expDate) {
       return;
     }
@@ -120,7 +134,7 @@ export class AuthService {
     return {
       token,
       userId,
-      expDate
+      expDate,
     };
   }
 
@@ -139,6 +153,12 @@ export class AuthService {
     this.clearAuthData();
     this.authTokenListner.next(false);
     clearTimeout(this.tokenTimer);
-    this.router.navigate(['/login']);
+    this.router.navigate(["/login"]);
+  }
+
+  updateUserProfile(data) {
+    return this.http.put(`${BACKEND_URL}updateProfile`, data, {
+      headers: new HttpHeaders().set("Content-Type", "application/json"),
+    });
   }
 }

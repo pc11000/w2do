@@ -1,9 +1,14 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-
 const User = require('../models/user');
 
 exports.createUser = (req, res, next) => {
+  if(!req.body.name || !req.body.email || !req.body.password){
+    res.status(400).json({
+      message: 'Bad request, required properties missing!'
+    });
+    return;
+  }
   bcrypt.hash(req.body.password, 10)
   .then(hash => {
     const user = new User({
@@ -24,6 +29,30 @@ exports.createUser = (req, res, next) => {
       });
     });
   });
+}
+
+exports.updateUser = async (req, res, next) => {
+  try {
+    const userFilter = { _id: req.body._id };
+    if (!userFilter["_id"]) {
+      return res.status(400).send({ status: 400, message: "bad request" });
+    }
+    const updateData = {
+      name: req.body.name,
+      email: req.body.email,
+      language: req.body.language
+    };
+
+    if(req.body.password) {
+      updateData.password = await bcrypt.hash(req.body.password, 10); 
+    }
+  
+    const updateUser = await User.findOneAndUpdate(userFilter, updateData).lean();
+      res.status(200).json({ message: 'User updated successfully!'});
+  } catch (err) {
+    console.log(err);
+      res.status(500).json({ message: 'Error updating user!'});
+ }
 }
 
 exports.userLogin = (req, res, next) => {
@@ -54,7 +83,8 @@ exports.userLogin = (req, res, next) => {
       message: 'user logged in',
       userId: fetchedUser._id,
       token: token,
-      expiresIn: 3600 // in seconds = 1 hr
+      expiresIn: 3600, // in seconds = 1 hr,
+      userMeta: { email: fetchedUser.email, _id: fetchedUser._id , name: fetchedUser.name, language: fetchedUser.language}
     }
     // console.log(response);
     res.status(200).json(response);
