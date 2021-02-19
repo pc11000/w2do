@@ -14,8 +14,9 @@ var itemsRouter = require('./routes/items');
 var app = express();
 
 //Connect to mongo database
-mongoose.connect('mongodb://localhost:27017/todo', {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
-.then(() => {
+mongoose.connect('mongodb://database:27017/todo', {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true })
+
+  .then(() => {
   console.log("Connected to the database");
 })
 .catch(err => {
