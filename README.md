@@ -5,14 +5,6 @@
 Node JS, MongoDB, and angular CLI (v9 or greater) must be installed on your machine
 
 
-#Clone the project
-
-download or clone the project from https://github.com/amjad087/todo-mean.git
-
-# clone
-
- 	git clone https://github.com/amjad087/todo-mean.git
-
 # Running the Server (Node JS)
 
 	open terminal
