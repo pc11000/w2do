@@ -18,6 +18,12 @@ export class SettingsComponent implements OnInit {
   disableForm: boolean = false;
   editFormText: string = "Edit";
   userData: any = {};
+  languages = [
+    { value: "English", viewValue: "English" },
+    { value: "German", viewValue: "German" },
+    { value: "French", viewValue: "French" },
+    { value: "Spanish", viewValue: "Spanish" },
+  ];
 
   constructor(
     private formBuilder: FormBuilder,
