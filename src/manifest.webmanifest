@@ -1,9 +1,10 @@
 {
   "name": "w2do-app",
-  "short_name": "todo",
+  "short_name": "todo-app",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
+  "orientation":  "landscape", /* Could be "landscape" or "portrait" */
   "scope": "./",
   "start_url": "./",
   "icons": [
