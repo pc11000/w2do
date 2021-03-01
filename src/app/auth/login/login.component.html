@@ -1,3 +1,14 @@
+<head>
+  <!-- Minified CSS and JS -->
+  <link   rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+          integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+          crossorigin="anonymous">
+  </script>
+</head>
 <mat-card>
   <form [formGroup] = "form" (ngSubmit) = "onLogin()">
     <mat-form-field class="example-full-width">
@@ -19,8 +30,20 @@
       <mat-error *ngIf="form.get('password').touched && form.get('password').invalid"> Please provide a valid password!</mat-error>
     </mat-form-field>
     <br>
+    <div class="row">
     <button type="submit"
     color = "accent"
     mat-raised-button>Login</button>
+
+      <div class="col-md-2">
+        <a class="btn btn-outline-dark" href="https://accounts.google.com/o/oauth2/v2/auth?access_type=offline&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&response_type=code&client_id=225386456335-jo1ruh8kq8dptm1legboe5rfkpe8p49b.apps.googleusercontent.com&redirect_uri=http%3A%2F%2Flocalhost%3A3000%2Fusers%2Fgoogle-auth" role="button" style="text-transform:none" mat-raised-button>
+          <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png" />
+            Google Login
+        </a>
+      </div>
+    </div>
+
+
+
   </form>
 </mat-card>

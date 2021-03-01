@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-
-import { AuthService } from '../../services/auth.service';
+import {Component, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../services/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -29,5 +28,4 @@ export class SignupComponent implements OnInit {
     this.authService.createUser(this.form.value.name, this.form.value.email, this.form.value.password);
     this.form.reset();
   }
-
 }

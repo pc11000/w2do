@@ -11,11 +11,11 @@ const BACKEND_URL = environment.apiUrl + "users/";
   providedIn: "root",
 })
 export class AuthService {
-  private token;
-  private userId: string;
-  private userAuthenticated = false;
-  private authTokenListner = new Subject<boolean>();
-  private tokenTimer: any;
+  public token;
+  public userId: string;
+  public userAuthenticated = false;
+  public authTokenListner = new Subject<boolean>();
+  public tokenTimer: any;
   constructor(private http: HttpClient, private router: Router) {}
 
   createUser(name: string, email: string, password: string) {
@@ -75,7 +75,7 @@ export class AuthService {
         userId: string;
         token: string;
         expiresIn: number;
-      }>(BACKEND_URL + "login", { email, password })
+      }>(BACKEND_URL + 'login', { email, password })
       .subscribe(
         (response) => {
           if (response.token) {
@@ -95,13 +95,13 @@ export class AuthService {
       );
   }
 
-  private setTokenTimer(expDuration: number) {
+  public setTokenTimer(expDuration: number) {
     this.tokenTimer = setTimeout(() => {
       this.logout();
     }, expDuration * 1000); // multiplied by 1000 because setTimeout works in miliseconds
   }
 
-  private saveAuthData(response: any) {
+  public saveAuthData(response: any) {
     const token = response.token;
     const userId = response.userId;
     const expiresIn = response.expiresIn;
@@ -121,6 +121,7 @@ export class AuthService {
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     localStorage.removeItem("expDate");
+    localStorage.removeItem("username");
   }
 
   private getAuthData() {

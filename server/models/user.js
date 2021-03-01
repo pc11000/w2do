@@ -6,6 +6,7 @@ const userSchema = mongoose.Schema({
   password: { type: String, required: true },
   name: { type: String, required: true,},
   language: { type: String, default: 'English' },
+  provider: { type: String, default: 'email'}
 });
 
 userSchema.plugin(uniqvalidator);
