@@ -14,8 +14,10 @@ export class SocialComponent implements OnInit {
   constructor(private router: Router, private activatedRoute: ActivatedRoute, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.activatedRoute.queryParams.subscribe(params => {
-
+    this.activatedRoute.queryParams.subscribe((params: object | any) => {
+      params = JSON.parse(JSON.stringify(params));
+      params.userMeta = { email: params.email, _id: params._id , name: params.name, language: params.language};
+      Object.preventExtensions(params);
       this.authService.setTokenTimer(params.expiresIn);
       this.authService.saveAuthData(params);
       this.authService.token = params.token
