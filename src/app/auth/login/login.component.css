@@ -6,3 +6,17 @@ mat-card {
 mat-form-field {
   width: 100%;
 }
+#loginBtn{
+  margin-left:15px;
+}
+.login{
+  display:flex;
+}
+
+@media screen and (max-width: 600px) {
+  mat-card {
+    width: 60%;
+    margin: auto;
+    top:50px;
+  }
+}
