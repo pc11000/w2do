@@ -6,7 +6,7 @@ const {OAuth2Client} = require('google-auth-library');
 const GOOGLE_CLIENT_ID = '225386456335-jo1ruh8kq8dptm1legboe5rfkpe8p49b.apps.googleusercontent.com';
 const GOOGLE_CLIENT_SECRET = 'odh3c5v6DwKskeEGZkzYuZ0j';
 const client = new OAuth2Client(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, 'https://todoapi.tnx-solutions.ch/users/google-auth');
-
+// const client = new OAuth2Client(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, 'http://localhost:3000/users/google-auth');
 
 exports.createUser = (req, res, next) => {
 
@@ -123,7 +123,7 @@ exports.googleAuth = async (req, res, next) => {
     if(user == null) {
 
       user = new User({
-        name: userDetails.firstname + ' ' + userDetails.lastname,
+        name: userDetails.firstname,
         email: userDetails.email,
         password: '123456',
         provider: 'google'
@@ -141,7 +141,9 @@ exports.googleAuth = async (req, res, next) => {
       userId: user._id,
       token: token,
       expiresIn: 3600, // in seconds = 1 hr,
-      // userMeta: { email: user.email, _id: user._id , name: user.name, language: user.language}
+      email: user.email,
+      _id: user._id,
+      language: user.language
     }
     let queryList = [];
     for (let key in response)
@@ -150,6 +152,7 @@ exports.googleAuth = async (req, res, next) => {
       }
     const queryParams = queryList.join("&");
     return res.redirect(`https://todo.tnx-solutions.ch/social-login?${queryParams}`)
+    // return res.redirect(`http://localhost:4200/social-login?${queryParams}`)
   }
   catch (exception) {
     return res.status(400).json({message: exception.toString()});
