@@ -3,8 +3,10 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const {OAuth2Client} = require('google-auth-library');
 
-const GOOGLE_CLIENT_ID = '225386456335-jo1ruh8kq8dptm1legboe5rfkpe8p49b.apps.googleusercontent.com';
-const GOOGLE_CLIENT_SECRET = 'odh3c5v6DwKskeEGZkzYuZ0j';
+// const GOOGLE_CLIENT_ID = '225386456335-jo1ruh8kq8dptm1legboe5rfkpe8p49b.apps.googleusercontent.com';
+const GOOGLE_CLIENT_ID = '91474893082-ur8tpsu71b3lvbgua7c6lk3fim4orsh2.apps.googleusercontent.com';
+//const GOOGLE_CLIENT_SECRET = 'odh3c5v6DwKskeEGZkzYuZ0j';
+const GOOGLE_CLIENT_SECRET = '-498YMcaNfJRjNB2Gz8Sm66e';
 const client = new OAuth2Client(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, 'https://todoapi.tnx-solutions.ch/users/google-auth');
 // const client = new OAuth2Client(GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, 'http://localhost:3000/users/google-auth');
 
